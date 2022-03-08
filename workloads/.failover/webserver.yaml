@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webserver-failover
+  name: webserver-failover
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webserver-failover
+  template:
+    metadata:
+      labels:
+        app: webserver-failover
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
