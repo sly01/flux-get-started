@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: webserver1
-  name: webserver1
+    app: webserver2
+  name: webserver2
   namespace: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: webserver1
+      app: webserver2
   template:
     metadata:
       labels:
-        app: webserver1
+        app: webserver2
     spec:
       containers:
       - image: nginx
