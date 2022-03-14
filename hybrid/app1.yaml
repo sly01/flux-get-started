@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    io.cilium/global-service: "true"
+  labels:
+    app: app1-service
+  name: app1-service
+spec:
+  ports:
+  - name: 80-80
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  type: ClusterIP
