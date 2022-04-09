@@ -12,4 +12,5 @@ spec:
     path: charts/app
   values:
     image:
+      repository: quay.io/bitnami/nginx
       tag: 1.21.1
