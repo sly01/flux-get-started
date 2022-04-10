@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: app
+  namespace: demo
+spec:
+  releaseName: app
+  chart:
+    git: ssh://git@github.com/sly01/flux-get-started
+    ref: master
+    path: charts/app
+  values:
+    image:
+      repository: quay.io/bitnami/nginx
+      tag: 1.21.1
