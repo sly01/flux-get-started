@@ -13,4 +13,4 @@ spec:
   values:
     image:
       repository: quay.io/bitnami/nginx
-      tag: 1.21.1
+      tag: 1.21.6
