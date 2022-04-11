@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: preprod-pod
+  name: preprod-pod
+  namespace: demo
+spec:
+  containers:
+  - args:
+    - sleep
+    - "600"
+    image: busybox
+    name: preprod-pod
