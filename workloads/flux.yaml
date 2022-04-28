@@ -10,6 +10,8 @@ spec:
     name: flux
     version: 1.12.0
   values:
+    syncGarbageCollection:
+      enabled: true
     logFormat: json
     sync:
       state: secret
@@ -17,7 +19,7 @@ spec:
     git:
       url: git@github.com:sly01/flux-get-started
       branch: master
-      path: workloads,env/{prod,preprod}
+      path: workloads,env/prod,env/preprod
       readonly: true
       pollInterval: "2m"
       timeout: "1m"
