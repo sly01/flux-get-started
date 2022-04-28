@@ -1,0 +1,32 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: flux
+  namespace: demo
+spec:
+  chart:
+    repository: https://charts.fluxcd.io
+    name: flux
+    version: 1.12.0
+  values:
+    syncGarbageCollection:
+      enabled: true
+    logFormat: json
+    sync:
+      state: secret
+      timeout: 5m
+    git:
+      url: git@github.com:sly01/flux-get-started
+      branch: master
+      path: workloads,env/prod.failover,env/preprod
+      readonly: true
+      pollInterval: "2m"
+      timeout: "1m"
+      secretName: flux-git-deploy
+    registry:
+      disableScanning: true
+    annotations:
+      prometheus.io/path: /metrics
+      prometheus.io/port: "3030"
+      prometheus.io/scrape: "true"
