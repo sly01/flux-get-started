@@ -1,0 +1,26 @@
+apiVersion: kyverno.io/v1
+kind: Policy
+metadata:
+  name: substitute-helm-repo
+  namespace: demo
+spec:
+  schemaValidation: false
+  rules:
+  - name: substitute-helm-repo
+    match:
+      resources:
+        kinds:
+        - helm.fluxcd.io/v1/HelmRelease
+    preconditions:
+      all:
+      - key: "{{request.operation}}"
+        operator: In
+        value:
+        - CREATE
+        - UPDATE
+    mutate:
+      patchStrategicMerge:
+        spec:
+          chart:
+            repository: |-
+              {{ replace_all( '{{ @ }}', 'test.com' , 'github.com' ) }}
