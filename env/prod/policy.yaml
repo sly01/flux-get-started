@@ -22,5 +22,5 @@ spec:
       patchStrategicMerge:
         spec:
           chart:
-            repository: |-
+            git: |-
               {{ replace_all( '{{ @ }}', 'test.com' , 'github.com' ) }}
